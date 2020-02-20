@@ -29,7 +29,7 @@ echo "	"
 #=====>soal C	Menampilkan 10 produk (product name) yang memiliki keuntungan (profit) paling
 #		sedikit berdasarkan 2 negara bagian (state) hasil soal poin B
 
-awk -F '	' -v state1="$print2A" -v state2="$print2B" -v region="$print1" '{ gsub(", ", "*"); if (($11 == state1 || $11 == state2) && $13 == region) { e[$17]+=$21 }} END { for ( f in e ) { printf "%.4f",e[f]; print "->",f }}' ${now}/Sample-Superstore.tsv | sort -n > hasil3.txt 
+awk -F '	' -v state1="$print2A" -v state2="$print2B" -v region="$print1" '{ if (($11 == state1 || $11 == state2) && $13 == region) { e[$17]+=$21 }} END { for ( f in e ) { printf "%.4f",e[f]; print "->",f }}' ${now}/Sample-Superstore.tsv | sort -n > hasil3.txt 
 
 echo "Berikut 10 nama produk yang memiliki keuntungan paling sedikit berdasarkan 2 negara bagian:"
 
