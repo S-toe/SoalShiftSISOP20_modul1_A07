@@ -1,7 +1,7 @@
 #!/bin/bash
 
 input=$(echo $(echo $1 | awk -F '.' '{print $1}') | grep -i "^[a-z]\+$")
-echo $input
+#echo $input
 
 now=`pwd`
 
@@ -16,9 +16,9 @@ then
         inode=$(stat -c '%i' "${target}")
         fs=$(df  --output=source "${target}"  | tail -1)
         crtime=$(sudo debugfs -R 'stat <'"${inode}"'>' "${fs}" 2>/dev/null | grep -oP 'crtime.*--\s*\K.*' | awk '{print $4}' | awk -F ':' '{print $1}')
-        print1=$(echo -e "${crtime}" | sed -e 's/^[[:space:]]*//')
-	echo $print1
-        echo $crtime
+#       print1=$(echo -e "${crtime}" | sed -e 's/^[[:space:]]*//')
+#	echo $print1
+#       echo $crtime
 	done
 
     	arraya=({a..z})
@@ -26,7 +26,7 @@ then
 
 	hour=$crtime
 	hour2=$(($hour-1))
-	echo $hour-$hour2
+#	echo $hour-$hour2
 
    	change1=${arraya[hour]}
 	change2=${arraya[hour2]}
