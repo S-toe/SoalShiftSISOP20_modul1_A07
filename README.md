@@ -178,6 +178,8 @@ awk -F '->'  '{printf " - %s \n", $2}' hasil3.txt | head -10
 -  `awk -F ' ' -v state1="$print2A" -v state2="$print2B" -v region="$print1" '{ if (($11 == state1 || $11 == state2) && $13 == region) { e[$17]+=$21 }} END { for ( f in e ) { printf "%.4f",e[f]; print "->",f }}' ${now}/Sample-Superstore.tsv | sort -n > hasil3.txt`. Untuk soal ini juga penjelasannya hampir sama seperti soal sebelumnya, dengan tambahan pemfilteran yaitu variabel `-v state1="$print2A" -v state2="$print2B" -v region="$print1"` untuk menyimpan hasil dari soal A dan B. Array kembali dibuat untuk menyimpan nama produk pada kolom 17 dengan Region sesuai dengan soal A dan State sesuai soal B serta hasilnya disimpan kedalam file hasil3.txt dalam keadaan terurut.
 
 -  `awk -F '->' '{printf " - %s \n", $2}' hasil3.txt | head -10` digunakan untuk memfilter dan menampilkan 10 nama produk dari file hasil3.txt
+## Hasil Screenshoot
+![soal1](https://user-images.githubusercontent.com/58405725/75629136-f605dc00-5c11-11ea-939f-2dd25d40bb2b.png)
 ## Revisi soal no 1.
 Mengubah semua separator `awk -F '->'` menjadi `awk -F '-> '`(menambahkan spasi setelah panah), sehingga saya bisa langsung menggunakan variabel hasil tanpa harus menghilangkan spasi dengan sintaks `$(echo -e "${hasil1}" | sed -e 's/^[[:space:]]*//')`
 
@@ -654,7 +656,8 @@ echo  "harusnya ketik "Y" atau "N" :("
 fi
 
 - Lalu ditampilkan sebuah pertanyaan apakah ingin mengubah nama file yang telah dienkripsi kembali ke aslinya. Jika menginput `Y` maka nama file akan dirubah, jika `N` maka sebaliknya, dan jika menginput yang lain script akan berhenti dan menampilkan sebuah tulisan.
-
+## Hasil Screenshoot
+![soal2](https://user-images.githubusercontent.com/58405725/75629173-3feec200-5c12-11ea-90b5-523f06a7959e.png)
 ## Revisi soal no 2.
 Memecah jawaban yang enkripsi menjadi 2 bagian menjadi soal2_ab.sh dan soal2_enkripsi.sh
 
@@ -1041,6 +1044,9 @@ fi
 -  `cd /home/stoe/latihan` Sebelum menjalankan perintah script, digunakan perintah cd untuk berpindah tempat ke `/home/stoe/latihan` agar file yaang di download tidak berada di folder `/home/stoe`.
 
 -  `/bin/bash /home/stoe/latihan/soal3.sh` mejalankan bash script sesuai dengan full path yang diberikan.
-
+## Hasil Screenshoot
+![soal3_bash](https://user-images.githubusercontent.com/58405725/75629174-441adf80-5c12-11ea-8545-d8fff850f465.png)
+![hasil_duplicate](https://user-images.githubusercontent.com/58405725/75629176-467d3980-5c12-11ea-9537-a291d134ee6c.png)
+![hasil_kenangan](https://user-images.githubusercontent.com/58405725/75629178-4a10c080-5c12-11ea-82ef-eedcb2c99a70.png)
 ## Revisi soal no 3.
 Apabila crontab tidak menggunakan perintah cd terlebih dahulu maka file yang di download akan disimpan secara default di home user dimana crontab itu dijalankan.
